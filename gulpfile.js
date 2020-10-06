@@ -1,4 +1,4 @@
-﻿const { src, dest, watch, parallel } = require('gulp');
+﻿const { src, dest, watch, series, parallel } = require('gulp');
 const sourcemaps = require('gulp-sourcemaps');
 const sass = require('gulp-sass');
 const concat = require('gulp-concat');
@@ -65,4 +65,4 @@ function watchFiles() {
 }
 
 exports.build = parallel(scss, scripts);
-exports.dev = parallel(scss, scripts), watchFiles;
+exports.dev = series(parallel(scss, scripts), watchFiles);
