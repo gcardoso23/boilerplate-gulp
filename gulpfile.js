@@ -59,9 +59,7 @@ function scripts() {
 }
 
 function watchFiles() {
-    watch([paths.watchFiles.style, paths.watchFiles.scripts],
-    parallel(scss, scripts)
-  );
+  watch([paths.watchFiles.style, paths.watchFiles.scripts], parallel(scss, scripts));
 }
 
 exports.build = parallel(scss, scripts);
