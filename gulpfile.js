@@ -1,4 +1,4 @@
-﻿const { src, dest, watch, series, parallel } = require('gulp');
+﻿const { src, dest, watch, parallel } = require('gulp');
 const sourcemaps = require('gulp-sourcemaps');
 const sass = require('gulp-sass');
 const concat = require('gulp-concat');
@@ -59,12 +59,10 @@ function scripts() {
 }
 
 function watchFiles() {
-  watch([paths.watchFiles.style, paths.watchFiles.scripts],
-    series(
-      parallel(scss, scripts)
-    )
+    watch([paths.watchFiles.style, paths.watchFiles.scripts],
+    parallel(scss, scripts)
   );
 }
 
-exports.build = series(parallel(scss, scripts));
-exports.dev = series(parallel(scss, scripts), watchFiles);
+exports.build = parallel(scss, scripts);
+exports.dev = parallel(scss, scripts), watchFiles;
