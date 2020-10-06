@@ -66,5 +66,5 @@ function watchFiles() {
   );
 }
 
-exports.deploy = series(parallel(scss, scripts));
-exports.watch = series(parallel(scss, scripts), watchFiles);
+exports.build = series(parallel(scss, scripts));
+exports.dev = series(parallel(scss, scripts), watchFiles);
